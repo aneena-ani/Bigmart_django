@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div  class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4  style="text-align:center;" class="card-title">Category details</h4>
+                  <p class="card-description">
+
+                  </p>
+                  <form class="forms-sample" method="post" action="{% url 'update_cate' cateid=data.id %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputName1">Category Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" value="{{data.name}}" placeholder="Name" name="name">
+                    </div>
+                    <div class="form-group">
+                      <label >File upload</label>
+                      <input type="file" name="image" class="form-control">
+                        <img src="{{data.image.url}}" width="100px" height="100px">
+<!--                      <div class="input-group col-xs-12">-->
+<!--                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">-->
+<!--                        <span class="input-group-append">-->
+<!--                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                        </span>-->
+<!--                      </div>-->
+
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Category Description</label>
+                      <textarea class="form-control" id="exampleTextarea1" name="description" rows="3">{{data.description}}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">update</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+</body>
+</html>
+{% endblock %}

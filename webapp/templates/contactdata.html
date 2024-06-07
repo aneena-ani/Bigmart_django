@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Contact details</h1>
+<table width="100%">
+    <tr>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>CONTACT NUMBER</th>
+        <th>SUBJECT</th>
+        <th>MESSAGE</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td>{{i.cname}}</td>
+          <td>{{i.cemail}}</td>
+          <td>{{i.cphone}}</td>
+        <td>{{i.csubject}}</td>
+          <td>{{i.cmessage}}</td>
+<!--        <td><a href="{% url 'edit_products' proid=i.id %}">-->
+            <button>edit</button>
+        </a></td>
+        <td><a href="{% url 'deletedata' conid=i.id %}">
+            <button>delete</button>
+        </a></td>
+
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}
